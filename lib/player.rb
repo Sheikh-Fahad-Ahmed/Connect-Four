@@ -11,4 +11,12 @@ class Player
   def display_player_symbols
     puts "\nPlayer 1: #{@player1}\nPlayer 2: #{@player2}"
   end
+
+  def playing?(current_player)
+    if current_player == 'X'
+      puts "Player 1's turn"
+    else
+      puts "Player 2's turn"
+    end
+  end
 end
