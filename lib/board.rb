@@ -12,7 +12,7 @@ class Board
       puts row.map { |cell| cell || '.' }.join(' ')
     end
   end
+
+
 end
 
-b = Board.new
-b.show_board
