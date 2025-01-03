@@ -13,6 +13,8 @@ class Board
     end
   end
 
+  def update_board
+
 
 end
 

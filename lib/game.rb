@@ -6,17 +6,22 @@ require './lib/messages'
 
 class Game
   include Messages
-  attr_accessor :game_board, :players, :currently_playing
+  attr_accessor :game_board, :players, :current_player
 
   def initialize
     @game_board = Board.new
     @players = Player.new
-    @currently_playing = @players.player1
+    @current_player = @players.player1
+  end
+
+  def currently_playing
+    @current_player = @current_player == 'X' ? @current_player.player2 : @current_player.player1
   end
 
   def game_menu
     game_menu_text
-    choice = get_menu_choice
+    choice = player_choice
+    game_menu_choice(choice)
   end
 
   def game_menu_choice(choice)
@@ -29,9 +34,19 @@ class Game
     end
   end
 
-  def get_choice
+  def player_choice
     puts "\nEnter your choice: "
     gets.chomp.to_i
   end
-end
 
+  def start_game
+    until check_winning_condition
+      @players.playing?(@current_player)
+      game_board.show_board
+      get_position
+      update_board(position)
+      
+    end
+    
+  end
+end
