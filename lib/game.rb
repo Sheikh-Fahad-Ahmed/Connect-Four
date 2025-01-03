@@ -19,12 +19,21 @@ class Game
     choice = get_menu_choice
   end
 
-  def get_menu_choice
+  def game_menu_choice(choice)
+    if choice == 1
+      start_game
+    elsif choice == 2
+      how_to_play
+    else
+      exit 0
+    end
+  end
+
+  def get_choice
     puts "\nEnter your choice: "
     gets.chomp.to_i
   end
 end
-
 
 g = Game.new
 g.game_menu
