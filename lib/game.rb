@@ -39,12 +39,22 @@ class Game
     gets.chomp.to_i
   end
 
+  def position?
+    loop do
+      puts "\nEnter the position you want to drop (1 - 7): "
+      input = gets.chomp.to_i
+
+      return input if input.match?(/^\d+$/) && (1..7).include?(input)
+
+      puts "\nInvalid input. Enter a number between 1 to 7"
+    end
+  end
+
   def start_game
     until check_winning_condition
       @players.playing?(@current_player)
       game_board.show_board
-      get_position
-      update_board(position)
+      update_board(position?)
       
     end
     

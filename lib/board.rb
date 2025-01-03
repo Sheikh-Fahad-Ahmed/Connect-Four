@@ -12,9 +12,11 @@ class Board
       puts row.map { |cell| cell || '.' }.join(' ')
     end
   end
-
-  def update_board
-
-
 end
 
+
+b = Board.new
+b.show_board
+b.board[0][1] = 'X'
+puts
+b.show_board
