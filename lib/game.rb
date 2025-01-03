@@ -35,5 +35,3 @@ class Game
   end
 end
 
-g = Game.new
-g.game_menu
