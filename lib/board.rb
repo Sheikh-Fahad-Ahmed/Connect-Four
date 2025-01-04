@@ -9,20 +9,37 @@ class Board
 
   def show_board
     @board.each do |row|
-      puts row.map { |cell| cell }.join(' ')
+      puts row.join(' ')
     end
   end
 
   def update_board(position, player_symbol)
     column = position
-    @board.reverse_each do |row|
-      next if row[column] == 'X' || row[column] == 'O'
+    row = @board.rindex { |r| r[column] == '_' }
+    return 'error' if row.nil?
 
-      row[column] = player_symbol
-      break
+    @board[row][column] = player_symbol
+    true
+  end
+
+  def winning_condition
+    flag = 0
+    7.times do |i|
+      if board[5][i] == 'X'
+        flag += 1
+        return true if flag == 4
+      else
+        flag = 0
+      end
     end
+    false
   end
 end
 
-
-
+# b = Board.new
+# (2..5).each do |i|
+#   b.update_board(i, 'X')
+# end
+# b.show_board
+# puts 
+# print b.winning_condition
