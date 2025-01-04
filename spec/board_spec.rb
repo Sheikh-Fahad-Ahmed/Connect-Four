@@ -42,6 +42,31 @@ describe Board do
         expect(board.board[5][3]).to eq('X')
         expect(board.board[4][3]).to eq('O')
       end
+
+      it 'Stop if there are no available space' do
+        6.times { board.update_board(3, 'X') }
+        expect(board.update_board(3, 'X')).to eq('error')
+      end
+    end
+  end
+
+  describe '#winning_condition' do
+    context 'When a player has won' do
+      it 'returns true for a horizontal win' do
+        board.update_board(3, 'X')
+        board.update_board(4, 'X')
+        board.update_board(5, 'X')
+        board.update_board(6, 'X')
+        expect(board.winning_condition).to eq(true)
+      end
+
+      it 'returns true for a vertical win' do
+        board.update_board(3, 'X')
+        board.update_board(3, 'X')
+        board.update_board(3, 'X')
+        board.update_board(3, 'X')
+        expect(board.winning_condition).to eq(true)
+      end
     end
   end
 end
