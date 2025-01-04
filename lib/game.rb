@@ -54,7 +54,11 @@ class Game
     until check_winning_condition
       players.playing?(@current_player)
       game_board.show_board
-      game_board.update_board(position?, @current_player)
+      loop do
+        break if game_board.update_board(position?, @current_player)
+
+        puts "\n The column you entered is full. Try a different column.\n"
+      end
       @current_player = currently_playing
     end
   end
@@ -69,3 +73,8 @@ class Game
     end
   end
 end
+
+b = Board.new
+6.times { b.update_board(3, 'X') }
+b.show_board
+b.update_board(3, 'O')
