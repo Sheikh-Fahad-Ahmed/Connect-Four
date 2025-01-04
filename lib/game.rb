@@ -52,17 +52,17 @@ class Game
 
   def start_game
     until check_winning_condition
-      @players.playing?(@current_player)
+      players.playing?(@current_player)
       game_board.show_board
-      update_board(position?)
+      game_board.update_board(position?, @current_player)
       @current_player = currently_playing
     end
   end
 
   def check_winning_condition
-    if @game_board.winning_condition == true
+    if game_board.winning_condition == true
       winner_message
-    elsif @game_board.winning_condition == 'draw'
+    elsif game_board.winning_condition == 'draw'
       draw_message
     else
       false
