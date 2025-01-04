@@ -7,4 +7,11 @@ module Messages
     puts '3. Exit'
     puts "\n----------------------"
   end
+
+  def winner_message
+    message = <<~MESSAGE
+      Congratulation you win!!
+    MESSAGE
+    puts message
+  end
 end
