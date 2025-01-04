@@ -28,4 +28,20 @@ describe Board do
       end
     end
   end
+
+  describe '#update_board' do
+    context 'when valid position is provided' do
+      it 'updates the given position with player symbol' do
+        board.update_board(3, 'X')
+        expect(board.board[5][3]).to eq('X')
+      end
+
+      it 'updates the lowest possible row with the player symbol' do
+        board.update_board(3, 'X')
+        board.update_board(3, 'O')
+        expect(board.board[5][3]).to eq('X')
+        expect(board.board[4][3]).to eq('O')
+      end
+    end
+  end
 end
