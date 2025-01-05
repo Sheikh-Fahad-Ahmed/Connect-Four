@@ -1,7 +1,5 @@
 # Connect-Four
 
-# Connect Four
-
 Welcome to the **Connect Four** game! This is a classic two-player board game implemented in Ruby, where the goal is to align four tokens in a row, either horizontally, vertically, or diagonally.
 
 ## Features
@@ -43,25 +41,28 @@ Welcome to the **Connect Four** game! This is a classic two-player board game im
 3. Run the game:
 
    ```bash
-   ruby connect_four.rb
+   ruby lib/main.rb
    ```
 
 ## Project Structure
+
 
 ```
 connect-four/
 ├── lib/
 │   ├── board.rb       # Board logic and win detection
-│   ├── game.rb        # Main game loop and player interaction
+│   ├── main.rb        # Main game loop and core logic
+│   ├── messages.rb    # Contains messages displayed to the players
 │   └── player.rb      # Player-related logic
 ├── spec/
 │   ├── board_spec.rb  # Tests for board functionality
 │   ├── game_spec.rb   # Tests for game logic
 │   └── spec_helper.rb # RSpec configuration
-├── connect_four.rb    # Entry point for the game
 ├── README.md          # Project documentation
 └── Gemfile            # Dependency management
 ```
+
+
 
 ## Testing
 
@@ -78,34 +79,6 @@ This project uses **RSpec** for testing.
    ```bash
    rspec
    ```
-
-## Example Gameplay
-
-```
-Welcome to Connect Four!
-
-  1   2   3   4   5   6   7
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-
-Player X, choose a column: 4
-
-  1   2   3   4   5   6   7
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   | X |   |   |   |
-
-Player O, choose a column: 3
-...
-```
-
 ## License
 
 This project is licensed under the MIT License.
