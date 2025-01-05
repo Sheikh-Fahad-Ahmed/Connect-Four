@@ -74,6 +74,13 @@ describe Board do
         4.times { board.update_board(3, 'X') }
         expect(board.vertical_win).to eq(true)
       end
+
+      it 'returns false otherwise' do
+        2.times { board.update_board(3, 'X') }
+        2.times { board.update_board(3, 'O') }
+        2.times { board.update_board(3, 'X') }
+        expect(board.vertical_win).to eq(false)
+      end
     end
   end
 end
