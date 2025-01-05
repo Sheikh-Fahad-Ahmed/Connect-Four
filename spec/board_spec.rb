@@ -66,4 +66,14 @@ describe Board do
       end
     end
   end
+
+  describe '#vertical_win' do
+    context 'When a player has won' do
+      it 'returns true for a vertical win' do
+        board.update_board(3, 'O')
+        4.times { board.update_board(3, 'X') }
+        expect(board.vertical_win).to eq(true)
+      end
+    end
+  end
 end

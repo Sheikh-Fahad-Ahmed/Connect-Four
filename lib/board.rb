@@ -49,14 +49,25 @@ class Board
   end
 
   def vertical_win
-    
+    flag = 0
+    6.times do |i|
+      if board[i][3] == 'X'
+        flag += 1
+        return true if flag == 4
+      else
+        flag = 0
+      end
+    end
+    false
   end
 end
 
-# b = Board.new
-# (2..5).each do |i|
-#   b.update_board(i, 'X')
-# end
-# b.show_board
-# puts 
-# print b.winning_condition
+b = Board.new
+b.update_board(3, 'O')
+4.times do
+  b.update_board(3, 'X')
+end
+b.update_board(3, 'O')
+b.show_board
+
+print b.vertical_win
