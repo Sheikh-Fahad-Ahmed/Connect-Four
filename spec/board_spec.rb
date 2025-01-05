@@ -50,22 +50,19 @@ describe Board do
     end
   end
 
-  describe '#winning_condition' do
+  describe '#horizontal_win' do
     context 'When a player has won' do
       it 'returns true for a horizontal win' do
         board.update_board(3, 'X')
         board.update_board(4, 'X')
         board.update_board(5, 'X')
         board.update_board(6, 'X')
-        expect(board.winning_condition).to eq(true)
+        expect(board.horizontal_win).to eq(true)
       end
 
-      it 'returns true for a vertical win' do
+      it 'returns false otherwise' do
         board.update_board(3, 'X')
-        board.update_board(3, 'X')
-        board.update_board(3, 'X')
-        board.update_board(3, 'X')
-        expect(board.winning_condition).to eq(true)
+        expect(board.horizontal_win).to eq(false)
       end
     end
   end
