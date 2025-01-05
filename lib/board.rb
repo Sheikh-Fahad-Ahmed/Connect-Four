@@ -34,6 +34,23 @@ class Board
     end
     false
   end
+
+  def horizontal_win
+    flag = 0
+    7.times do |i|
+      if board[5][i] == 'X'
+        flag += 1
+        return true if flag == 4
+      else
+        flag = 0
+      end
+    end
+    false
+  end
+
+  def vertical_win
+    
+  end
 end
 
 # b = Board.new
