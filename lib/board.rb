@@ -7,6 +7,52 @@ class Board
     @board = Array.new(rows) { Array.new(columns, '_') }
   end
 
+  def diagonals
+    diagonals = []
+
+    # Top-left to bottom-right diagonals (starting from row 3 to row 5)
+    (3..5).each do |r|  # Rows from 3 to 5
+      diagonal = []
+      r.upto(5) do |i|  # Iterate down-right diagonally
+        c = i - r
+        diagonal << @board[i][c] if c >= 0 && c < 7
+      end
+      diagonals << diagonal
+    end
+
+    # Collect diagonals starting from the topmost row (row 0) to row 2
+    (0..2).each do |c|  # Columns from 0 to 2
+      diagonal = []
+      c.upto(6) do |i|  # Iterate down-right diagonally
+        r = i - c
+        diagonal << @board[r][i] if r >= 0 && r < 6
+      end
+      diagonals << diagonal
+    end
+
+    # Collect diagonals going bottom-left to top-right (starting from row 4 to row 0)
+    (4..5).each do |r|
+      diagonal = []
+      r.downto(0) do |i|
+        c = r - i
+        diagonal << @board[i][c] if c >= 0 && c < 7
+      end
+      diagonals << diagonal
+    end
+
+    # Collect diagonals starting from column 0 to column 3 (bottom-left to top-right)
+    (0..2).each do |c|
+      diagonal = []
+      c.downto(0) do |i|
+        r = i + c
+        diagonal << @board[r][i] if r >= 0 && r < 6
+      end
+      diagonals << diagonal
+    end
+
+    diagonals
+  end
+
   def show_board
     @board.each do |row|
       puts row.join(' ')
@@ -46,24 +92,27 @@ class Board
       row.join.include?('XXXX') || row.join.include?('OOOO')
     end
   end
+
+  def diagonal_win
+    diagonals.any? do |diagonal|
+      diagonal.each_cons(4).any? { |sub_arr| sub_arr.uniq.size == 1 && sub_arr.first != '_' }
+    end
+  end
+
+  
+
 end
 b = Board.new
-# b.update_board(3, 'O')
-# 4.times do
-#   b.update_board(3, 'X')
-# end
-# b.update_board(3, 'O')
-# b.show_board
 
 
 b.board = [
-  ['_', 'O', 'X', 'O', 'O', '_', '_'],
-  ['_', '_', '_', 'O', '_', '_', '_'],
-  ['_', '_', '_', 'O', '_', '_', '_'],
-  ['_', '_', '_', 'O', '_', '_', '_'],
-  ['O', 'O', 'X', 'X', 'X', '_', '_'],
-  ['O', 'X', 'O', 'X', 'X', '_', '_']
+          %w[X O X O O _ _],
+          %w[_ X _ O _ _ _],
+          %w[_ _ X O _ _ _],
+          %w[_ _ _ X _ _ _],
+          %w[O O X X O _ _],
+          %w[O X O X X O _]
 ]
 
 b.show_board
-print b.vertical_win
+print b.diagonal_win
