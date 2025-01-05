@@ -83,4 +83,32 @@ describe Board do
       end
     end
   end
+
+  describe '#diagonal_win' do
+    context 'When a player has won' do
+      it 'returns true for a diagonal win' do
+        board.board = [
+          %w[X O X O O _ _],
+          %w[_ X _ O _ _ _],
+          %w[_ _ O O _ _ _],
+          %w[_ O _ X _ _ _],
+          %w[O O X X O _ _],
+          %w[O X O X X O _]
+        ]
+        expect(board.diagonal_win).to eq(true)
+      end
+
+      it 'returns false otherwise' do
+        board.board = [
+          %w[X O X O O _ _],
+          %w[_ X _ O _ _ _],
+          %w[_ _ O O _ _ _],
+          %w[_ X _ X _ _ _],
+          %w[O O X X O _ _],
+          %w[O X O X X O _]
+        ]
+        expect(board.diagonal_win).to eq(false)
+      end
+    end
+  end
 end
