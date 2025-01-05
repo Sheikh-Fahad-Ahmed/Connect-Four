@@ -42,19 +42,11 @@ class Board
   end
 
   def vertical_win
-    flag = 0
-    6.times do |i|
-      if board[i][3] == 'X'
-        flag += 1
-        return true if flag == 4
-      else
-        flag = 0
-      end
+    board.transpose.any? do |row| # Transpose changes columns into rows
+      row.join.include?('XXXX') || row.join.include?('OOOO')
     end
-    false
   end
 end
-
 b = Board.new
 # b.update_board(3, 'O')
 # 4.times do
@@ -74,4 +66,4 @@ b.board = [
 ]
 
 b.show_board
-print b.horizontal_win
+print b.vertical_win
