@@ -47,12 +47,14 @@ Welcome to the **Connect Four** game! This is a classic two-player board game im
 ## Project Structure
 
 
+
 ```
 connect-four/
 ├── lib/
 │   ├── board.rb       # Board logic and win detection
 │   ├── main.rb        # Main game loop and core logic
 │   ├── messages.rb    # Contains messages displayed to the players
+│   ├── game.rb        # Game management and flow
 │   └── player.rb      # Player-related logic
 ├── spec/
 │   ├── board_spec.rb  # Tests for board functionality
