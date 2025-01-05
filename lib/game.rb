@@ -28,7 +28,7 @@ class Game
     if choice == 1
       start_game
     elsif choice == 2
-      how_to_play
+      rules
     else
       exit 0
     end
@@ -62,7 +62,6 @@ class Game
 
         puts "\n The column you entered is full. Try a different column.\n"
       end
-      
     end
   end
 
@@ -75,7 +74,7 @@ class Game
     elsif game_board.winning_condition == 'draw'
       clear_console
       game_board.show_board
-      draw_message(current_player)
+      draw_message
       exit 0
     else
       false
