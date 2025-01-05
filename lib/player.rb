@@ -13,10 +13,12 @@ class Player
   end
 
   def playing?(current_player)
+    puts "\n------------------------------"
     if current_player == 'X'
       puts "Player 1's turn"
     else
       puts "Player 2's turn"
     end
+    puts "------------------------------\n\n"
   end
 end

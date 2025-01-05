@@ -10,27 +10,24 @@ class Board
   def diagonals
     diagonals = []
 
-    # Top-left to bottom-right diagonals (starting from row 3 to row 5)
-    (3..5).each do |r|  # Rows from 3 to 5
+    (3..5).each do |r|
       diagonal = []
-      r.upto(5) do |i|  # Iterate down-right diagonally
+      r.upto(5) do |i|
         c = i - r
         diagonal << @board[i][c] if c >= 0 && c < 7
       end
       diagonals << diagonal
     end
 
-    # Collect diagonals starting from the topmost row (row 0) to row 2
-    (0..2).each do |c|  # Columns from 0 to 2
+    (0..2).each do |c|
       diagonal = []
-      c.upto(6) do |i|  # Iterate down-right diagonally
+      c.upto(6) do |i|
         r = i - c
         diagonal << @board[r][i] if r >= 0 && r < 6
       end
       diagonals << diagonal
     end
 
-    # Collect diagonals going bottom-left to top-right (starting from row 4 to row 0)
     (4..5).each do |r|
       diagonal = []
       r.downto(0) do |i|
@@ -40,7 +37,6 @@ class Board
       diagonals << diagonal
     end
 
-    # Collect diagonals starting from column 0 to column 3 (bottom-left to top-right)
     (0..2).each do |c|
       diagonal = []
       c.downto(0) do |i|
@@ -54,6 +50,9 @@ class Board
   end
 
   def show_board
+    
+    (1..7).each { |i| print "#{i} " }
+    puts
     @board.each do |row|
       puts row.join(' ')
     end
@@ -69,6 +68,7 @@ class Board
   end
 
   def winning_condition
+    return 'draw' if board.all? { |row| row.none? { |cell| cell == '_' } }
     return true if horizontal_win || vertical_win || diagonal_win
 
     false
@@ -91,21 +91,18 @@ class Board
       diagonal.each_cons(4).any? { |sub_arr| sub_arr.uniq.size == 1 && sub_arr.first != '_' }
     end
   end
-
-  
-
 end
-b = Board.new
+# b = Board.new
 
 
-b.board = [
-          %w[X O X O O _ _],
-          %w[_ X _ O _ _ _],
-          %w[_ _ X O _ _ _],
-          %w[_ _ _ X _ _ _],
-          %w[O O X X O _ _],
-          %w[O X O X X O _]
-]
+# b.board = [
+#           %w[X O X O O _ _],
+#           %w[_ X _ O _ _ _],
+#           %w[_ _ X O _ _ _],
+#           %w[_ _ _ X _ _ _],
+#           %w[O O X X O _ _],
+#           %w[O X O X X O _]
+# ]
 
-b.show_board
-print b.diagonal_win
+# b.show_board
+# print b.diagonal_win
