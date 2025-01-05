@@ -69,15 +69,8 @@ class Board
   end
 
   def winning_condition
-    flag = 0
-    7.times do |i|
-      if board[5][i] == 'X'
-        flag += 1
-        return true if flag == 4
-      else
-        flag = 0
-      end
-    end
+    return true if horizontal_win || vertical_win || diagonal_win
+
     false
   end
 
