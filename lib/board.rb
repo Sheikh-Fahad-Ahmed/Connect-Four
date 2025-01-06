@@ -92,17 +92,4 @@ class Board
     end
   end
 end
-# b = Board.new
 
-
-# b.board = [
-#           %w[X O X O O _ _],
-#           %w[_ X _ O _ _ _],
-#           %w[_ _ X O _ _ _],
-#           %w[_ _ _ X _ _ _],
-#           %w[O O X X O _ _],
-#           %w[O X O X X O _]
-# ]
-
-# b.show_board
-# print b.diagonal_win
